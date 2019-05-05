@@ -10,27 +10,20 @@ int main(void) {
 }
 
 void Problem3() {
+    char c;
+    char srcName[] = "test.txt";
+    char destName[] = "copy_test.txt";
     FILE *src, *dest;
-    char c, srcName[256], destName[256];
-    printf("輸入要讀取的檔案路徑: ");
-    gets(srcName);
     src = fopen(srcName, "r");
-    if(src == NULL) {
-        puts("檔案讀取失敗");
-        exit(1);
-    }
-    printf("輸入要寫入的檔案路徑: ");
-    gets(destName);
     dest = fopen(destName, "w");
-    if(dest == NULL) {
-        fclose(src);
-        puts("檔案寫入失敗");
+    if(src == NULL || dest == NULL) {
+        puts("Fail.");
         exit(1);
     }
-    puts("檔案複製結束");
     while((c = fgetc(src)) != EOF) {
         fputc(toupper(c), dest);
     }
+    puts("Success.");
     fclose(src);
     fclose(dest);
 }
