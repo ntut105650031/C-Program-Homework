@@ -14,14 +14,14 @@ void Problem3() {
     char c, srcName[256], destName[256];
     printf("輸入要讀取的檔案路徑: ");
     gets(srcName);
-    src = fopen(srcName, "rb");
+    src = fopen(srcName, "r");
     if(src == NULL) {
         puts("檔案讀取失敗");
         exit(1);
     }
     printf("輸入要寫入的檔案路徑: ");
     gets(destName);
-    dest = fopen(destName, "wb");
+    dest = fopen(destName, "w");
     if(dest == NULL) {
         fclose(src);
         puts("檔案寫入失敗");
