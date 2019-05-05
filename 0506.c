@@ -10,29 +10,27 @@ int main(void) {
 }
 
 void Problem3() {
-    FILE *src, *dist;
-    char c, srcName[256], distName[256];
-    //printf("¿é¤J­nÅª¨úªºÀÉ®×¸ô®|: ");
-    printf("Input source file path : ");
+    FILE *src, *dest;
+    char c, srcName[256], destName[256];
+    printf("è¼¸å…¥è¦è®€å–çš„æª”æ¡ˆè·¯å¾‘: ");
     gets(srcName);
-    src = fopen(srcName, "r");
+    src = fopen(srcName, "rb");
     if(src == NULL) {
-        //puts("ÀÉ®×Åª¨ú¥¢±Ñ");
-        puts("File read fail.");
+        puts("æª”æ¡ˆè®€å–å¤±æ•—");
         exit(1);
     }
-    //printf("¿é¤J­n¼g¤JªºÀÉ®×¸ô®|: ");
-    printf("Input source file path : ");
-    gets(distName);
-    dist = fopen(distName, "w");
-    if(dist == NULL) {
+    printf("è¼¸å…¥è¦å¯«å…¥çš„æª”æ¡ˆè·¯å¾‘: ");
+    gets(destName);
+    dest = fopen(destName, "wb");
+    if(dest == NULL) {
         fclose(src);
-        puts("ÀÉ®×¼g¤J¥¢±Ñ");
+        puts("æª”æ¡ˆå¯«å…¥å¤±æ•—");
         exit(1);
     }
+    puts("æª”æ¡ˆè¤‡è£½çµæŸ");
     while((c = fgetc(src)) != EOF) {
-        fputc(toupper(c), dist);
+        fputc(toupper(c), dest);
     }
     fclose(src);
-    fclose(dist);
+    fclose(dest);
 }
